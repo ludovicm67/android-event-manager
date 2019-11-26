@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EventManager</string>
+    <string name="sign_up">M\'inscrire</string>
+    <string name="need_an_account_register_now">Pas encore inscrit ? <u>Inscrivez vous !</u></string>
+    <string name="already_have_an_account">Déjà un compte ? <u>Connectez vous !</u></string>
+    <string name="log_in">Me connecter</string>
+    <string name="login">Connexion</string>
+    <string name="register">Créer mon compte</string>
+    <string name="username_hint">Nom d\'utilisateur…</string>
+    <string name="password_hint">Mot de passe…</string>
 </resources>

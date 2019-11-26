@@ -16,4 +16,10 @@
 
     <string name="need_an_account_register_now">Need an account? <u>Register now!</u></string>
     <string name="already_have_an_account">Already have an account? <u>Login!</u></string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="log_in">Log In</string>
+    <string name="register">Register</string>
+    <string name="username_hint">Username…</string>
+    <string name="password_hint">Password…</string>
 </resources>
