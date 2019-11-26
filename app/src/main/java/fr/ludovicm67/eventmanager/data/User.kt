@@ -1,4 +1,4 @@
-package fr.ludovicm67.eventmanager.domain
+package fr.ludovicm67.eventmanager.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
