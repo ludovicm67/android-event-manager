@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import fr.ludovicm67.eventmanager.ui.register.RegisterFragment
+import fr.ludovicm67.eventmanager.ui.login.LoginFragment
 
 class AuthActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class AuthActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.auth_container, RegisterFragment.newInstance())
+                .replace(R.id.auth_container, LoginFragment.newInstance())
                 .commitNow()
         }
     }

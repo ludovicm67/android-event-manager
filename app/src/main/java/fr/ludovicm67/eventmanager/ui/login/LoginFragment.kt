@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import fr.ludovicm67.eventmanager.MainActivity
 
 import fr.ludovicm67.eventmanager.R
+import fr.ludovicm67.eventmanager.ui.register.RegisterFragment
 
 class LoginFragment : Fragment() {
 
@@ -34,6 +36,14 @@ class LoginFragment : Fragment() {
             activity?.let { ctx ->
                 startActivity(Intent(ctx, MainActivity::class.java))
             }
+        }
+
+        val register: TextView = view.findViewById(R.id.login_register)
+        register.setOnClickListener {
+            fragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.auth_container, RegisterFragment.newInstance())
+                ?.commit()
         }
     }
 

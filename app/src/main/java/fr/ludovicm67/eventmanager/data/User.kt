@@ -13,7 +13,7 @@ data class User(
     val firstName: String,
     val lastName: String,
     val email: String,
-    val avatar: String,
-    val activated: Boolean,
+    val avatar: String?,
+    val activated: Boolean = true,
     val createdAt: Date
 )

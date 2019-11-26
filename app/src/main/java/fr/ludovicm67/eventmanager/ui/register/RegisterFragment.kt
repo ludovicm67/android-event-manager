@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import fr.ludovicm67.eventmanager.R
 import fr.ludovicm67.eventmanager.ui.login.LoginFragment
 
@@ -27,7 +28,7 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val btn: Button = view.findViewById(R.id.register_button)
+        val btn: TextView = view.findViewById(R.id.register_login)
         btn.setOnClickListener {
             fragmentManager
                 ?.beginTransaction()
