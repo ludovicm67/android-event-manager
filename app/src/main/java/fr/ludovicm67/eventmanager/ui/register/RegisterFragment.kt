@@ -22,17 +22,18 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         return inflater.inflate(R.layout.register_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val btn: Button = view.findViewById(R.id.register_button)
-        btn.setOnClickListener { view ->
-            fragmentManager?.beginTransaction()?.replace(R.id.auth_container, LoginFragment.newInstance())?.commit()
-        }
-
         super.onViewCreated(view, savedInstanceState)
+        val btn: Button = view.findViewById(R.id.register_button)
+        btn.setOnClickListener {
+            fragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.auth_container, LoginFragment.newInstance())
+                ?.commit()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
