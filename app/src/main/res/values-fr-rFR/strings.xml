@@ -9,4 +9,19 @@
     <string name="register">Créer mon compte</string>
     <string name="username_hint">Nom d\'utilisateur…</string>
     <string name="password_hint">Mot de passe…</string>
+    <string name="email_hint">Adresse mail…</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="first_name_hint">Prénom…</string>
+    <string name="last_name_hint">Nom…</string>
+    <string name="menu_gallery">Gallerie</string>
+    <string name="menu_home">Accueil</string>
+    <string name="menu_send">Envoyé</string>
+    <string name="menu_share">Partagé</string>
+    <string name="menu_tools">Outils</string>
+    <string name="menu_slideshow">Diaporama</string>
+    <string name="nav_header_desc">En-tête de navigation</string>
+    <string name="navigation_drawer_close">Fermer le menu de navigation</string>
+    <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>
+    <string name="nav_header_title">Android Studio (FR)</string>
+    <string name="nav_header_subtitle">android.studio@android.fr</string>
 </resources>
