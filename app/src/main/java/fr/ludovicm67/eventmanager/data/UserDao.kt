@@ -11,8 +11,14 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE username = :username")
     fun findByUsername(username: String): LiveData<UserEntity>
 
+    @Query("SELECT id FROM users WHERE username = :username")
+    suspend fun getUserIdFromUsername(username: String): Int?
+
     @Query("SELECT * FROM users WHERE id = :id")
     fun findById(id: Int): LiveData<UserEntity>
+
+    @Insert
+    suspend fun insert(user: UserEntity): Long
 
     @Insert
     suspend fun insertAll(vararg user: UserEntity)
@@ -21,5 +27,5 @@ interface UserDao {
     suspend fun delete(user: UserEntity)
 
     @Update
-    suspend fun updateTodo(vararg users: UserEntity)
+    suspend fun update(vararg users: UserEntity)
 }

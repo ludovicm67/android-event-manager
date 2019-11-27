@@ -1,12 +1,12 @@
 package fr.ludovicm67.eventmanager
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import fr.ludovicm67.eventmanager.data.AppDatabase
-import fr.ludovicm67.eventmanager.data.UserEntity
 import fr.ludovicm67.eventmanager.ui.login.LoginFragment
 import androidx.lifecycle.observe
 
@@ -35,6 +35,15 @@ class AuthActivity : AppCompatActivity() {
                 println(it)
             }
         }
-    }
 
+        val currentUser = db.currentUserDao().getAll()
+        currentUser.observe(this) { list ->
+            if (list.isNotEmpty()) {
+                println("User is authenticated")
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                println("User is not logged in")
+            }
+        }
+    }
 }

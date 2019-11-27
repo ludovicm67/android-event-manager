@@ -1,6 +1,5 @@
 package fr.ludovicm67.eventmanager.ui.register
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import fr.ludovicm67.eventmanager.R
 import fr.ludovicm67.eventmanager.data.AppDatabase
 import fr.ludovicm67.eventmanager.data.UserEntity
 import fr.ludovicm67.eventmanager.ui.login.LoginFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.*
 
 class RegisterFragment : Fragment() {
 
@@ -24,7 +19,9 @@ class RegisterFragment : Fragment() {
         fun newInstance() = RegisterFragment()
     }
 
-    private lateinit var viewModel: RegisterViewModel
+    private val viewModel: RegisterViewModel by viewModels {
+        RegisterViewModelFactory(AppDatabase(requireContext().applicationContext))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,25 +65,9 @@ class RegisterFragment : Fragment() {
                     email = email,
                     password = password
                 )
-                GlobalScope.launch {
-                    saveUser(user)
-                }
+                viewModel.register(user)
             }
 
         }
     }
-
-    private suspend fun saveUser(user: UserEntity) {
-        val db = AppDatabase(this.requireContext())
-        withContext(Dispatchers.IO) {
-            db.userDao().insertAll(user)
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

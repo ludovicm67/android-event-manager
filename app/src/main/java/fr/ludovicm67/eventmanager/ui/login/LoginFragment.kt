@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import fr.ludovicm67.eventmanager.MainActivity
 
 import fr.ludovicm67.eventmanager.R
+import fr.ludovicm67.eventmanager.data.AppDatabase
 import fr.ludovicm67.eventmanager.ui.register.RegisterFragment
 
 class LoginFragment : Fragment() {
@@ -20,7 +22,9 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels {
+        LoginViewModelFactory(AppDatabase(requireContext().applicationContext))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +37,9 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val btn: Button = view.findViewById(R.id.login_button)
         btn.setOnClickListener {
-            activity?.let { ctx ->
-                startActivity(Intent(ctx, MainActivity::class.java))
-            }
+            val usernameInput: TextView = view.findViewById(R.id.login_username)
+            val username: String = usernameInput.text.toString()
+            viewModel.login(username)
         }
 
         val register: TextView = view.findViewById(R.id.login_register)
@@ -46,11 +50,4 @@ class LoginFragment : Fragment() {
                 ?.commit()
         }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

@@ -1,5 +1,6 @@
 package fr.ludovicm67.eventmanager
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -13,6 +14,8 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import androidx.lifecycle.observe
+import fr.ludovicm67.eventmanager.data.AppDatabase
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +45,17 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val db = AppDatabase(this)
+        val currentUser = db.currentUserDao().getAll()
+        currentUser.observe(this) { list ->
+            if (list.isEmpty()) {
+                println("User logged out")
+                startActivity(Intent(this, AuthActivity::class.java))
+            } else {
+                println("User is authenticated")
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

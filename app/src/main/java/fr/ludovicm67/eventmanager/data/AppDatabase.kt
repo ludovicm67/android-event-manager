@@ -7,13 +7,14 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [UserEntity::class],
+    entities = [UserEntity::class, CurrentUserEntity::class],
     version = 1,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun currentUserDao(): CurrentUserDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null
