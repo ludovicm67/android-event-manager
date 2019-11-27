@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [UserEntity::class, CurrentUserEntity::class],
+    entities = [UserEntity::class, CurrentUserEntity::class, EventEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -15,6 +15,7 @@ import androidx.room.TypeConverters
 abstract class AppDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun currentUserDao(): CurrentUserDao
+    abstract fun eventDao(): EventDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null
