@@ -13,7 +13,7 @@
     <string name="action_settings">Paramètres</string>
     <string name="first_name_hint">Prénom…</string>
     <string name="last_name_hint">Nom…</string>
-    <string name="menu_gallery">Gallerie</string>
+    <string name="menu_event_creation">Nouvel évènement</string>
     <string name="menu_home">Accueil</string>
     <string name="menu_send">Envoyé</string>
     <string name="menu_share">Partagé</string>
